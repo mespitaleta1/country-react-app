@@ -1,10 +1,32 @@
+.cardWrapper {
+  display: flex;
+}
+
 .flag {
+  border: 1px solid #ccc;
   border-radius: 50%;
   height: 60px;
   width: 60px;
   object-fit: cover;
+  margin-right: 1.5rem;
 }
 
-.cardWrapper {
-  display: flex;
+.name {
+  margin-bottom: 0.25rem;
+}
+
+.region {
+  font-style: italic;
+}
+
+.detail {
+  border-top: 1px solid #ccc;
+  margin-top: 0.2rem;
+  padding-top: 0.2rem;
+}
+
+.icon {
+  height: 15px;
+  width: 15px;
+  margin-right: 0.5rem;
 }
