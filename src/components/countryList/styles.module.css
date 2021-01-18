@@ -4,3 +4,21 @@
   gap: 20px 20px;
   grid-template-areas: ". . .";
 }
+
+.countryDetail {
+  flex-basis: 33%;
+}
+
+.countryDetail p {
+  font-size: 0.7rem;
+}
+
+.countryDetail h6 {
+  margin-bottom: 0.1rem;
+}
+
+.nameDetail {
+  font-style: bold;
+  font-weight: 300;
+  color: #ccc;
+}

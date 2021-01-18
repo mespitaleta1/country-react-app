@@ -1,17 +1,14 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Coin from "../icons/Coin";
 import Lang from "../icons/Lang";
+import { useState } from "react";
 
 import styles from "./styles.module.css";
 
 const CountryCard = (props) => {
   return (
-    <Card>
+    <Card onClick={() => props.onHandleShow(props)}>
       <Card.Body>
         <div className="d-flex justify-content-start">
           <div>
@@ -29,7 +26,9 @@ const CountryCard = (props) => {
             <Lang className={styles.icon} />
             <div>
               {props.languages.map((language, index) => (
-                <span key={index}>{language["iso639_2"]} /</span>
+                <span key={index}>
+                  {language["iso639_2"]} {props.languages.length > 1 ? "/" : ""}
+                </span>
               ))}
             </div>
           </div>
@@ -38,7 +37,9 @@ const CountryCard = (props) => {
             <Coin className={styles.icon} />
             <div>
               {props.currencies.map((currency, index) => (
-                <span key={index}>{currency.code} /</span>
+                <span key={index}>
+                  {currency.code} {props.currencies.length > 1 ? "/" : ""}
+                </span>
               ))}
             </div>
           </div>
