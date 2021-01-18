@@ -1,0 +1,17 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(12, 205, 163);
+  background: linear-gradient(
+    173deg,
+    rgba(12, 205, 163, 1) 5%,
+    rgba(26, 205, 119, 0.994757644268645) 56%
+  );
+  color: #fff;
+  font-size: 3rem;
+  font-style: oblique;
+  font-weight: 600;
+  text-transform: uppercase;
+  height: 24vh;
+}

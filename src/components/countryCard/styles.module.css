@@ -1,5 +1,14 @@
-.cardWrapper {
-  display: flex;
+.card {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px;
+}
+
+.card .cardWrapper {
+  padding: 1rem;
 }
 
 .flag {
@@ -8,14 +17,20 @@
   height: 60px;
   width: 60px;
   object-fit: cover;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
 }
 
-.name {
-  margin-bottom: 0.25rem;
+.cardWrapper .name {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.region {
+.cardWrapper .capital {
+  font-size: 0.8rem;
+}
+
+.cardWrapper .region {
+  font-size: 0.7rem;
   font-style: italic;
 }
 
@@ -23,6 +38,7 @@
   border-top: 1px solid #ccc;
   margin-top: 0.2rem;
   padding-top: 0.2rem;
+  font-size: 0.8rem;
 }
 
 .icon {

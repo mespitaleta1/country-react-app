@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import CountryCard from "../countryCard";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import axios from "axios";
 import CountryMap from "../countryMap";
-
+import Spinner from "react-bootstrap/Spinner";
 import styles from "./styles.module.css";
 
 const CountryList = ({ countries }) => {
@@ -20,11 +18,15 @@ const CountryList = ({ countries }) => {
   return (
     <>
       <div className={styles.countryGrid}>
-        {countries.map((country, index) => {
-          return (
-            <CountryCard key={index} onHandleShow={handleShow} {...country} />
-          );
-        })}
+        {countries.length > 0 ? (
+          countries.map((country, index) => {
+            return (
+              <CountryCard key={index} onHandleShow={handleShow} {...country} />
+            );
+          })
+        ) : (
+          <Spinner animation="border" />
+        )}
       </div>
       {selectedCountry && (
         <Modal show={showDetail} onHide={handleClose}>

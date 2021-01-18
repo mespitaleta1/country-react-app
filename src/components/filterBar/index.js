@@ -1,64 +1,104 @@
-import React from "react";
-import { InputGroup } from "react-bootstrap";
-import { FormControl } from "react-bootstrap";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Lens from "../icons/Lens";
+import Button from "react-bootstrap/Button";
 import styles from "./styles.module.css";
 
-//import Input from "react-bootstrap/Input";
+const FilterSideBar = (props) => {
+  const [active, setActive] = useState("");
+  const [value, setValue] = useState("");
 
-const SearchBar = () => {
-  return (
-    <InputGroup>
-      <InputGroup.Prepend>
-        <InputGroup.Text id="btnSearchBar">
-          <Lens />
-        </InputGroup.Text>
-      </InputGroup.Prepend>
-      <FormControl
-        type="text"
-        placeholder="Search your favorite country"
-        aria-label="Search"
-        aria-describedby="btnSearchBar"
-      />
-    </InputGroup>
-  ); //<input type="text" placeholder="Search.."></input>;
-};
+  const handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    if (target.type === "checkbox") {
+      if (value) {
+        setActive(name);
+      } else {
+        setActive("");
+      }
+    } else {
+      setValue(value);
+    }
+  };
 
-const FilterSideBar = () => {
+  const handleCleanFilter = () => {
+    setActive("");
+    setValue("");
+    props.onHandleFilterSubmit(null);
+  };
+
   return (
     <Form>
-      <Form.Group controlId="formGroups" className={styles.form}>
+      <Form.Group controlId="formGroups">
         <Form.Group>
-          <Form.Check id={`name`} label={`NAME`} />
-          <Form.Control type="text" placeholder="Enter the name country" />
+          <Form.Check
+            checked={active === "name"}
+            onChange={(e) => handleInputChange(e)}
+            name="name"
+            label={`NAME`}
+          />
         </Form.Group>
         <Form.Group>
-          <Form.Check id={`capital_city`} label={`CAPITAL CITY`} />
-          <Form.Control type="text" placeholder="Enter the capital city" />
+          <Form.Check
+            checked={active === "capital"}
+            onChange={(e) => handleInputChange(e)}
+            name="capital"
+            label={`CAPITAL CITY`}
+          />
         </Form.Group>
         <Form.Group>
-          <Form.Check id={`continent`} label={`CONTINENT`} />
-          <Form.Control type="text" placeholder="Enter the continent" />
+          <Form.Check
+            checked={active === "region"}
+            onChange={(e) => handleInputChange(e)}
+            name="region"
+            label={`CONTINENT`}
+          />
         </Form.Group>
         <Form.Group>
-          <Form.Check id={`calling_code`} label={`CALLING CODE`} />
-          <Form.Control type="text" placeholder="Enter the calling call" />
+          <Form.Check
+            checked={active === "callingcode"}
+            onChange={(e) => handleInputChange(e)}
+            name="callingcode"
+            label={`CALLING CODE`}
+          />
         </Form.Group>
         <Form.Group>
-          <Form.Check id={`language`} label={`LANGUAGE`} />
-          <Form.Control type="text" placeholder="Enter the language" />
+          <Form.Check
+            checked={active === "lang"}
+            onChange={(e) => handleInputChange(e)}
+            name="lang"
+            label={`LANGUAGE`}
+          />
+          <Form.Control
+            type="text"
+            placeholder="Enter filter value"
+            onChange={(e) => handleInputChange(e)}
+            value={value}
+          />
         </Form.Group>
       </Form.Group>
+
+      <Button
+        className={styles.button}
+        disabled={!value}
+        variant="primary"
+        onClick={() => props.onHandleFilterSubmit({ active, value })}
+      >
+        Filter
+      </Button>
+      <Button disabled={!value} variant="primary" onClick={handleCleanFilter}>
+        Clear Filter
+      </Button>
     </Form>
   );
 };
 
-const FilterBar = () => {
+const FilterBar = (props) => {
   return (
-    <>
-      <FilterSideBar />
-    </>
+    <div className={styles.filterForm}>
+      <FilterSideBar {...props} />
+    </div>
   );
 };
 export default FilterBar;
