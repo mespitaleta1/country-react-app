@@ -12,11 +12,11 @@ const App = () => {
 
   useEffect(() => {
     const getUrl = () => {
-      const baseUrl = "https://restcountries.eu/rest/v2/";
+      const baseUrl = "https://restcountries.com/v3.1/";
       const fieldsUrl =
-        "fields=flag;name;capital;region;currencies;languages;altSpellings;alpha3Code;topLevelDomain;population;subregion;latlng";
+        "all?fields=name,capital,region,currencies,languages"; 
       if (currentFilter) {
-        return `${baseUrl}${currentFilter.active}/${currentFilter.value}?${fieldsUrl}`;
+        return `${baseUrl}/${currentFilter.active}/${currentFilter.value}`;
       } else {
         return `${baseUrl}all?${fieldsUrl}`;
       }

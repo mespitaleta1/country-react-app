@@ -6,16 +6,19 @@ import Lang from "../icons/Lang";
 import styles from "./styles.module.css";
 
 const CountryCard = (props) => {
-  return (
+let currency = Object.values(props.currencies || {})[0];
+let language = Object.values(props.languages || {})[0];
+
+return (
     <Card className={styles.card} onClick={() => props.onHandleShow(props)}>
       <Card.Body className={styles.cardWrapper}>
-        <div className="d-flex justify-content-start align-items-center">
+        <div className="d-flex justify-content-start align-items-start">
           <div>
-            <img className={styles.flag} src={props.flag} alt={props.name} />
+            <img className={styles.flag} src={props.flags.svg} alt={props.name.common} />
           </div>
 
           <div>
-            <Card.Title className={styles.name}>{props.name}</Card.Title>
+            <Card.Title className={styles.name}>{props.name.common}</Card.Title>
             <Card.Subtitle className={styles.capital}>
               {props.capital}
             </Card.Subtitle>
@@ -25,24 +28,16 @@ const CountryCard = (props) => {
         <div className={styles.detail}>
           <div className="d-flex justify-content-start align-items-center">
             <Lang className={styles.icon} />
-            <div>
-              {props.languages.map((language, index) => (
-                <span key={index}>
-                  {language["iso639_2"]} {props.languages.length > 1 ? "/" : ""}
-                </span>
-              ))}
-            </div>
+            <span>     
+              {language}
+            </span>
           </div>
 
           <div className="d-flex justify-content-start align-items-center">
             <Coin className={styles.icon} />
-            <div>
-              {props.currencies.map((currency, index) => (
-                <span key={index}>
-                  {currency.code} {props.currencies.length > 1 ? "/" : ""}
-                </span>
-              ))}
-            </div>
+              <span>
+                {currency?.name}
+              </span>
           </div>
         </div>
       </Card.Body>

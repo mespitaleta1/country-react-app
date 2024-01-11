@@ -31,7 +31,7 @@ const CountryList = ({ countries }) => {
       {selectedCountry && (
         <Modal show={showDetail} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{selectedCountry.name}</Modal.Title>
+            <Modal.Title>{selectedCountry.name.common}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="d-flex  flex-wrap">
@@ -41,12 +41,12 @@ const CountryList = ({ countries }) => {
               </div>
 
               <div className={styles.countryDetail}>
-                <h6>{selectedCountry.alpha3Code}</h6>
+                <h6>{selectedCountry.altSpellings[0]}</h6>
                 <p className={styles.nameDetail}> ABBREVATION </p>
               </div>
 
               <div className={styles.countryDetail}>
-                <h6> {selectedCountry.topLevelDomain.join(" / ")} </h6>
+                <h6> {selectedCountry.tld[0]} </h6>
                 <p className={styles.nameDetail}> DOMAIN </p>
               </div>
 
@@ -57,19 +57,16 @@ const CountryList = ({ countries }) => {
 
               <div className={styles.countryDetail}>
                 <h6>
-                  {" "}
-                  {selectedCountry.languages.map((language, index) => (
-                    <span key={index}>{language["iso639_2"]} /</span>
-                  ))}
+                    <span>{Object.values(selectedCountry.languages).join(" / ")}</span>
                 </h6>
                 <p className={styles.nameDetail}> LANGUAGES </p>
-              </div>
+                  </div>
 
               <div className={styles.countryDetail}>
-                <h6> {selectedCountry.altSpellings.join(" / ")} </h6>
+                <h6> {selectedCountry.name.official} </h6>
                 <p className={styles.nameDetail}> FULL NAME </p>
               </div>
-            </div>
+              </div>
           </Modal.Body>
 
           <CountryMap latlng={selectedCountry.latlng} />
