@@ -2,7 +2,7 @@
 
 ## Welcome! 👋
 
-This project was created to build a Single Page Application, with the APIs [http://restcountries.eu/](http://restcountries.eu/) and React.js, and created by the name of Country-React-app.
+This project was created to build a Single Page Application, with the APIs [https://restcountries.com/](https://restcountries.com/) and React.js, and created by the name of Country-React-app.
 
 This single page application and their design was inspired in a card list of elements with which the user is able to list all the countries showing up information as: flag, languages, capital city, among others.Also user has the ability to click in the card to see its details of the country and its geolocation. Likewise the user is allowed to filter by field, in order to see a specific set of countries.
 
