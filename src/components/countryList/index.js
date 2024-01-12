@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CountryCard from "../countryCard";
 import Modal from "react-bootstrap/Modal";
-import CountryMap from "../countryMap";
 import Spinner from "react-bootstrap/Spinner";
 import styles from "./styles.module.css";
 
@@ -68,8 +67,6 @@ const CountryList = ({ countries }) => {
               </div>
               </div>
           </Modal.Body>
-
-          <CountryMap latlng={selectedCountry.latlng} />
         </Modal>
       )}
     </>
